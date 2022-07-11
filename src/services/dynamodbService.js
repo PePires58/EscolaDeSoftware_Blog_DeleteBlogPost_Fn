@@ -9,7 +9,7 @@ exports.DeleteBlogPost = async function (key) {
         const command = new DeleteItemCommand({
             TableName: process.env.BlogPostTableName,
             Key: {
-                "title": key
+                "title": { S: key }
             }
         });
 
