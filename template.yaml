@@ -11,6 +11,9 @@ Parameters:
   BlogPostTableDeleteItemPolicy:
     Description: BlogPost Table Policy
     Type: String
+  BlogPostTableGetItemPolicy:
+    Description: BlogPost Table Policy
+    Type: String
 
 Resources:
   BlogPostBucketDeleteObjectPolicy:
@@ -61,6 +64,16 @@ Resources:
                 !Sub "${AWS::AccountId}",
                 ":policy/",
                 !Ref BlogPostTableDeleteItemPolicy,
+              ],
+            ]
+        - Fn::Join:
+            [
+              "",
+              [
+                "arn:aws:iam::",
+                !Sub "${AWS::AccountId}",
+                ":policy/",
+                !Ref BlogPostTableGetItemPolicy,
               ],
             ]
       Environment:
