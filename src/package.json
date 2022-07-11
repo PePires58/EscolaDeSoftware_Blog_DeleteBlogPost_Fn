@@ -1,0 +1,22 @@
+{
+  "name": "delete_blog_post",
+  "version": "1.0.0",
+  "description": "Delete BlogPost",
+  "main": "app.js",
+  "repository": "https://github.com/PePires58/EscolaDeSoftware_Blog_DeleteBlogPost_Fn",
+  "author": "Pedro Henrique Pires - Escola de Software",
+  "license": "MIT",
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.118.1",
+    "@aws-sdk/client-s3": "^3.120.0",
+    "axios": "^0.21.1",
+    "uuid": "^8.3.2"
+  },
+  "scripts": {
+    "test": "mocha tests/unit/"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4"
+  }
+}
