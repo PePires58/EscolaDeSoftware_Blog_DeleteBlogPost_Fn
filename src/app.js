@@ -7,12 +7,9 @@ exports.lambdaHandler = async (event, context) => {
     try {
         const dynamoDbItem = await dynamodbService.GetBlogPostByKey(event.queryStringParameters.key);
 
-        console.log('dynamodb item');
-        console.log(dynamoDbItem);
-
         Promise.all([
-            dynamodbService.DeleteBlogPost(dynamoDbItem.title.S),
-            s3Service.DeleteObject(dynamoDbItem.content_bucket_key.S)
+            await dynamodbService.DeleteBlogPost(dynamoDbItem.title.S),
+            await s3Service.DeleteObject(dynamoDbItem.content_bucket_key.S)
         ]);
 
         response = {
