@@ -5,10 +5,14 @@ const s3Service = require('./services/s3Service');
 
 exports.lambdaHandler = async (event, context) => {
     try {
-        const dynamoDbItem = await dynamodbService.GetBlogPostByKey(event.queryStringParameters.key);
+        const parametersDynamo = {
+            Hash: event.headers["id"],
+            Range: event.queryStringParameters.title
+        }
+        const dynamoDbItem = await dynamodbService.GetBlogPostByKey(parametersDynamo);
 
         Promise.all([
-            await dynamodbService.DeleteBlogPost(dynamoDbItem.title.S),
+            await dynamodbService.DeleteBlogPost(parametersDynamo),
             await s3Service.DeleteObject(dynamoDbItem.content_bucket_key.S)
         ]);
 
