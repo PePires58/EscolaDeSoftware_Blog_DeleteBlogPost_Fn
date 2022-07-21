@@ -19,7 +19,9 @@ exports.lambdaHandler = async (event, context) => {
         response = {
             'statusCode': 200,
             'isBase64Encoded': false,
-            'headers': {}
+            'headers': {
+                'Content-Type': 'application/json'
+            }
         }
 
     } catch (err) {
@@ -28,7 +30,9 @@ exports.lambdaHandler = async (event, context) => {
             'statusCode': 500,
             'body': JSON.stringify({ error: err }),
             'isBase64Encoded': false,
-            'headers': {}
+            'headers': {
+                'Content-Type': 'application/json'
+            }
         }
     }
 
